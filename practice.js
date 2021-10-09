@@ -86,6 +86,42 @@ var sumTotal = function(products) {
 // exampleOutput: { dessertType: 3, dessertType2: 1 }
 var dessertCategories = function(desserts) {
 
+  var returnObj = {cake: 0, cookie: 0, pie: 0, drink: 0};
+
+  returnObj.cake = _.reduce(desserts, function(total, dish) {
+    if (dish.type === 'cake') {
+      return total += 1;
+    } else {
+      return total;
+    }
+  }, 0);
+
+  returnObj.cookie = _.reduce(desserts, function(total, dish) {
+    if (dish.type === 'cookie') {
+      return total += 1;
+    } else {
+      return total;
+    }
+  }, 0);
+
+  returnObj.pie = _.reduce(desserts, function(total, dish) {
+    if (dish.type === 'pie') {
+      return total += 1;
+    } else {
+      return total;
+    }
+  }, 0);
+
+  returnObj.drink = _.reduce(desserts, function(total, dish) {
+    if (dish.type === 'drink') {
+      return total += 1;
+    } else {
+      return total;
+    }
+  }, 0);
+
+  return returnObj;
+
 };
 
 // given an array of movie data objects,return an array containing
