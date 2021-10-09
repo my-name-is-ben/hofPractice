@@ -144,6 +144,23 @@ var ninetiesKid = function(movies) {
 // runtime than your time limit.
 // timeLimit is an integer representing a number of minutes.
 var movieNight = function(movies, timeLimit) {
+  /*
+  var moviesWithinLimit = _.reduce(movies, function(total, movie) {
+    if (movie.runtime <= timeLimit) {
+      return total++;
+    } else {
+      return total;
+    }
+  }, 0);
+  */
+
+  return _.reduce(movies, function(total, movie) {
+    if (movie.runtime <= timeLimit) {
+      return ++total; // ** NOTE: MUST RETURN PRE-INCREMENT or total += 1 would work too
+    } else {
+      return total;
+    }
+  }, 0) > 0;
 
 };
 
@@ -156,6 +173,10 @@ var movieNight = function(movies, timeLimit) {
 // given an array of strings, use _.map to return a new array containing all
 // strings converted to uppercase letters.
 var upperCaseFruits = function(fruits) {
+
+  return _.map(fruits, function(item) {
+    return item.toUpperCase();
+  });
 
 };
 
