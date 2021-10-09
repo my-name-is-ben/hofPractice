@@ -61,6 +61,10 @@ var startsWith = function(fruits, letter) {
 // return a filtered array containing only cookie-type desserts.
 var cookiesOnly = function(desserts) {
 
+  return _.filter(desserts, function(item) {
+    return (item['type'] === 'cookie');
+  });
+
 };
 
 /*
@@ -71,6 +75,10 @@ var cookiesOnly = function(desserts) {
 
 // return the total price of all products.
 var sumTotal = function(products) {
+
+  return _.reduce(products, function(total, item) {
+    return total += Number(item.price.replace('$', ''));
+  }, 0);
 
 };
 
