@@ -185,6 +185,14 @@ var upperCaseFruits = function(fruits) {
 // TIP: Items that contain flour are not gluten-free.
 var glutenFree = function(desserts) {
 
+  return _.map(desserts, function(item) {
+    item['glutenFree'] = true;
+
+    if (item.ingredients.includes('flour')) { // ?????? not sure why it's not working.
+      item['glutenFree'] = false;
+    }
+  });
+
 };
 
 // use _.map to return an array of items with their sale prices, with a new property
@@ -208,5 +216,27 @@ var glutenFree = function(desserts) {
 
 */
 var applyCoupon = function(groceries, coupon) {
+
+  return _.map(groceries, function(item) {
+    item['salePrice'] = '';
+
+    var manipulateString = item.price.replace('$', '');
+    manipulateString = manipulateString.replace('.', '');
+    manipulateString = Number(manipulateString);
+    manipulateString = manipulateString * (1 - coupon);
+    manipulateString = manipulateString.toFixed(0);
+    manipulateString = manipulateString.toString();
+    manipulateString = manipulateString.split('');
+    if (manipulateString.length === 2) {
+      manipulateString.unshift('0');
+    }
+    manipulateString.splice(-2, 0, '.');
+    manipulateString.unshift('$');
+    manipulateString = manipulateString.join('');
+
+    item.salePrice = manipulateString;
+
+
+  });
 
 };
